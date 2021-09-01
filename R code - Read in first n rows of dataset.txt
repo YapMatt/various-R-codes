@@ -1,0 +1,15 @@
+# This code is for looking at the first n rows of a large text file
+
+setwd("Z:/Mental Dental/Raw data")
+DHSdset <- read.table("201509.03_002_DHS_geo.txt", header=FALSE, nrows=10)
+OHCWAdset <- read.table("201509.03_002_OHC_geo.txt", header=FALSE, nrows=10)
+
+MHISdset <- read.table("mhis_geo_to_return.txt", header=FALSE, nrows=1, skip=2, col.names=MHISdset.colnames)
+
+MHISdset <- read.table("mhis_geo_to_return.txt", header=FALSE, nrows=10)
+
+
+MHISdset.colnames <- read.table("mhis_geo_to_return.txt", header=FALSE, nrows=1)
+MHISdset.row1 <- read.table("mhis_geo_to_return.txt", header=FALSE, nrows=1, skip=1, sep="\t")
+MHISdset.row2 <- read.table("mhis_geo_to_return.txt", header=FALSE, nrows=1, skip=2, sep="\t")
+MHISdset.row3 <- read.table("mhis_geo_to_return.txt", header=FALSE, nrows=1, skip=3, sep="      ")

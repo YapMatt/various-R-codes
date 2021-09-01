@@ -1,0 +1,8 @@
+library(tcltk)
+n<- 1000
+pb <- tkProgressBar(title = "Doing something", min = 0, max = n, width = 200)
+for(i in 1:n){
+   Sys.sleep(0.001) 
+   setTkProgressBar(pb, i, label=paste(round(i/n*100,1),"% done"))
+}
+close(pb)

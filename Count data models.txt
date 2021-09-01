@@ -1,0 +1,18 @@
+read("Y:/Matt Yap Work folder/MH and drought/19082019/06112019/All wheatbelt 06122019/sample aug fem lag 0.csv")
+
+library(ggplot2)
+ggplot(data=dat, aes(y=count/pop*1000, x=rain_mm, colour=pop)) + geom_point() + geom_smooth(method="lm")
+
+formula1 <- count ~ 1 + rain_mm + offset(log(pop))
+sfile <- summary(glm(formula1, data=dat, family=poisson))$coefficients[2,]
+
+formula2 <- count/pop*1000 ~ rain_mm
+sfile2 <- summary(lm(formula2, data=dat))$coefficients[2,]
+
+formula3 <- log(count/pop) ~ rain_mm
+coef(summary(lm(formula3, data=dat)))
+
+ggplot(data=dat, aes(y=log(count/pop), x=rain_mm, colour=pop)) + geom_point() + geom_smooth(method="lm")
+
+library(MASS)
+coef(summary(glm.nb(formula1, data=dat)))
